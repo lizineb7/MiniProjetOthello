@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import com.othello.ui.UIUtils;
 
 /**
- * Setup Screen - FIXED version with proper layout
+ * Setup Screen
  */
 public class SetupScreen extends BorderPane {
 
@@ -33,7 +33,7 @@ public class SetupScreen extends BorderPane {
     public SetupScreen() {
         setStyle(Styles.SURFACE_BACKGROUND);
 
-        // ✅ FIX: Use BorderPane for proper layout management
+        // Use BorderPane for proper layout management
         setTop(createHeader());
         setCenter(createContentContainer());
         setBottom(createFooter());
@@ -49,7 +49,7 @@ public class SetupScreen extends BorderPane {
         VBox header = new VBox();
         header.setStyle(Styles.HEADER_STYLE);
         header.setAlignment(Pos.CENTER_LEFT);
-        header.setPrefHeight(70);  // ✅ FIX: Fixed header height
+        header.setPrefHeight(70);  // header height
 
         HBox headerContent = new HBox();
         headerContent.setAlignment(Pos.CENTER_LEFT);
@@ -59,12 +59,6 @@ public class SetupScreen extends BorderPane {
         Label title = new Label("🎮 OTHELLO GAME");
         title.setStyle(Styles.LABEL_TITLE);
 
-        HBox gameInfo = new HBox();
-        gameInfo.setSpacing(Constants.SPACING_12);
-        gameInfo.setAlignment(Pos.CENTER_LEFT);
-        Label modeLabel = new Label("Mode: Normal");
-        modeLabel.setStyle(Styles.LABEL_SECONDARY);
-        gameInfo.getChildren().add(modeLabel);
 
         javafx.scene.layout.Region spacer = new javafx.scene.layout.Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -86,7 +80,7 @@ public class SetupScreen extends BorderPane {
 
         windowControls.getChildren().addAll(minimizeButton, maximizeButton, closeButton);
 
-        headerContent.getChildren().addAll(title, gameInfo, spacer, windowControls);
+        headerContent.getChildren().addAll(title, spacer, windowControls);
         header.getChildren().add(headerContent);
         return header;
     }
@@ -103,14 +97,10 @@ public class SetupScreen extends BorderPane {
         content.setAlignment(Pos.TOP_CENTER);
 
         VBox leftColumn = createParametersCard();
-        // ✅ REMOVE: leftColumn.setPrefWidth(400);
-        // ✅ REMOVE: leftColumn.setMaxWidth(450);
         leftColumn.setMaxWidth(Double.MAX_VALUE); // ← Grow as needed
         HBox.setHgrow(leftColumn, Priority.ALWAYS); // ← GROW with window
 
         VBox rightColumn = createLeaderboardCard();
-        // ✅ REMOVE: rightColumn.setPrefWidth(400);
-        // ✅ REMOVE: rightColumn.setMaxWidth(450);
         rightColumn.setMaxWidth(Double.MAX_VALUE); // ← Grow as needed
         HBox.setHgrow(rightColumn, Priority.ALWAYS); // ← GROW with window
 

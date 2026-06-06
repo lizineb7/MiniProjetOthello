@@ -15,7 +15,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 /**
- * Game Screen - FIXED version with proper board centering
+ * Game Screen
  */
 public class GameScreen extends BorderPane {
 
@@ -34,7 +34,7 @@ public class GameScreen extends BorderPane {
     public GameScreen() {
         setStyle(Styles.SURFACE_BACKGROUND);
 
-        // ✅ FIX: Use BorderPane for proper layout management
+        // Use BorderPane for proper layout management
         setTop(createHeader());
         setCenter(createCenterContent());
         setBottom(createBottomNav());
@@ -55,7 +55,7 @@ public class GameScreen extends BorderPane {
         headerContent.setSpacing(Constants.SPACING_16);
         headerContent.setPadding(new Insets(Constants.SPACING_16, Constants.SPACING_24, Constants.SPACING_16, Constants.SPACING_24));
 
-        // 🟢 ADDED: Back Arrow Button to return to the previous screen
+        // Back Arrow Button to return to the previous screen
         backArrowButton = new Button("←");
         backArrowButton.setStyle("-fx-background-color: transparent; -fx-text-fill: #1a1a1a; -fx-font-size: 20px; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 0 10 0 0;");
         backArrowButton.setOnAction(e -> { if (onBackButtonPressed != null) onBackButtonPressed.run(); });
@@ -74,7 +74,7 @@ public class GameScreen extends BorderPane {
         minimizeButton = new Button("—");
         minimizeButton.setStyle("-fx-background-color: transparent; -fx-text-fill: #5f6368; -fx-font-size: 18px; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 5;");
 
-        // 🟢 ADDED: Maximize button to complete the window management buttons
+        // Maximize button to complete the window management buttons
         maximizeButton = new Button("🗖");
         maximizeButton.setStyle("-fx-background-color: transparent; -fx-text-fill: #5f6368; -fx-font-size: 14px; -fx-cursor: hand; -fx-padding: 5;");
 
@@ -84,10 +84,10 @@ public class GameScreen extends BorderPane {
         closeButton.setOnMouseEntered(e -> closeButton.setStyle("-fx-background-color: #e81123; -fx-text-fill: white; -fx-font-size: 18px; -fx-cursor: hand; -fx-padding: 5;"));
         closeButton.setOnMouseExited(e -> closeButton.setStyle("-fx-background-color: transparent; -fx-text-fill: #5f6368; -fx-font-size: 18px; -fx-cursor: hand; -fx-padding: 5;"));
 
-        // 🟢 UPDATED: Put the maximize button in the center slot
+        // Put the maximize button in the center slot
         windowControls.getChildren().addAll(minimizeButton, maximizeButton, closeButton);
 
-        // 🟢 UPDATED: Inserted backArrowButton right before the title
+        // Inserted backArrowButton right before the title
         headerContent.getChildren().addAll(backArrowButton, title, spacer, windowControls);
         header.getChildren().add(headerContent);
         return header;
@@ -109,8 +109,6 @@ public class GameScreen extends BorderPane {
 
         // Board - RESPONSIVE
         boardView = new GameBoardView();
-        // ✅ REMOVE: boardView.setPrefWidth(600);
-        // ✅ REMOVE: boardView.setMaxWidth(700);
         boardView.setMaxWidth(Double.MAX_VALUE);  // ← Can grow infinitely
         boardView.setMaxHeight(Double.MAX_VALUE); // ← Can grow infinitely
         HBox.setHgrow(boardView, Priority.ALWAYS); // ← GROW with window

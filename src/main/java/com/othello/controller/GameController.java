@@ -30,7 +30,6 @@ public class GameController {
     private boolean gameRunning = false;
     private boolean waitingForAI = false;
 
-    // Updated constructor
     public GameController(Stage parentStage) {
         this.parentStage = parentStage;
     }

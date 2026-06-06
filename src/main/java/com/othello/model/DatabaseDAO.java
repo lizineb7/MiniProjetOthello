@@ -155,9 +155,6 @@ public class DatabaseDAO {
     /**
      * Met à jour les statistiques du joueur
      */
-    /**
-     * Met à jour les statistiques du joueur
-     */
     private static void updatePlayerStats(GameSession session) {
         String query = "UPDATE players SET totalGames = totalGames + 1, " +
                 "wins = wins + CASE WHEN id = ? THEN 1 ELSE 0 END, " +
@@ -169,7 +166,7 @@ public class DatabaseDAO {
             int player1Id = getPlayerId(session.getPlayer1().getName());
             int player2Id = getPlayerId(session.getPlayer2().getName());
 
-            // 🟢 FIXED: Compare using unique names or structural IDs instead of object references (==)
+            // Compare using unique names or structural IDs instead of object references (==)
             boolean player1Won = session.getWinner() != null &&
                     session.getWinner().getName().equals(session.getPlayer1().getName());
             boolean player2Won = session.getWinner() != null &&

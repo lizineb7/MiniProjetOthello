@@ -29,7 +29,7 @@ public class GameWindow {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("🎮 OTHELLO GAME");
 
-        // ✅ CLEAN FIX: Let the Scene handle default dimension rendering maps
+        // Let the Scene handle default dimension rendering maps
         stage.setMinWidth(900);
         stage.setMinHeight(600);
 
@@ -128,7 +128,7 @@ public class GameWindow {
         gameScreen.setOnBackButtonPressed(this::showSetupScreen);
         gameScreen.setOnMenuButtonPressed(this::showSetupScreen);
 
-        // 🟢 FIXED RESTART: Restarts the game state clean
+        // Restarts the game state clean
         gameScreen.getRestartButton().setOnAction(e -> {
             gameController.startNewGame(player1, player2,
                     gameScreen.getBoardView(), gameScreen.getScoreboardView());
